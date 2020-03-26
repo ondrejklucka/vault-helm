@@ -361,6 +361,7 @@ server:
           path = "/vault/data"
         }
 
+        service_registration "kubernetes" {}
     # config is a raw string of default configuration when using a Stateful
     # deployment. Default is to use a Consul for its HA storage backend.
     # This should be HCL.
