@@ -109,8 +109,8 @@ server:
   # By default no direct resource request is made.
 
   image:
-    repository: "vault"
-    tag: "1.3.3"
+    repository: "hashicorp/vault-enterprise"
+    tag: "1.4.0-beta1_ent"
     # Overrides the default Image Pull Policy
     pullPolicy: IfNotPresent
 
@@ -367,6 +367,7 @@ server:
     config: |
       ui = true
       cluster_addr = "https://POD_IP:8201"
+      log_level = "debug"
 
       listener "tcp" {
         tls_disable = 1
@@ -377,6 +378,8 @@ server:
         path = "vault"
         address = "HOST_IP:8500"
       }
+
+      service_registration "kubernetes" {}
 
       # Example configuration for using auto-unseal, using Google Cloud KMS. The
       # GKMS keys must already exist, and the cluster must have a service account
